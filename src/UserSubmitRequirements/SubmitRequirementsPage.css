@@ -1,0 +1,111 @@
+/* Container Styles */
+.educational-assistance-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 2px solid #4CAF50; /* Green border */
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border-radius: 8px;
+  }
+  
+  /* Form Styles */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: left;
+  }
+  
+  /* Input Styles */
+  input[type="text"],
+  input[type="date"],
+  input[type="tel"],
+  input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #4CAF50; /* Green border */
+    border-radius: 6px;
+    font-size: 18px;
+  }
+  
+  /* Label Styles */
+  label {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  /* Button Styles */
+  button[type="submit"] {
+    background-color: #4CAF50; /* Green background color */
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  /* Adjust the form-group style for spacing */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Add styles for the 9 rows */
+  .form-row {
+    display: flex;
+    gap: 10px;
+    text-align: left;
+  }
+  
+  /* Upload Section Styles */
+  .upload-section {
+    margin-top: 40px;
+    padding: 40px;
+    border: 2px solid #4CAF50; /* Green border */
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border-radius: 8px;
+  }
+  
+  .file-upload {
+    margin: 20px 0;
+  }
+  
+  .file-upload label {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .file-upload input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #4CAF50; /* Green border */
+    border-radius: 6px;
+    font-size: 18px;
+  }
+  
+  .cancel-button {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cancel-button:hover {
+    background-color: #cc0000;
+  }
+  

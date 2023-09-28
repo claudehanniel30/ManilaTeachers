@@ -1,0 +1,132 @@
+/* ProfilePage.css */
+
+/* Profile container */
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #e5e5e5;
+  background-color: #f8f8f8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Profile header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 20px;
+  object-fit: cover;
+  border: 3px solid #007bff;
+}
+
+.profile-info h1 {
+  font-size: 28px;
+  margin: 0;
+  color: #333;
+}
+
+.profile-info p {
+  font-size: 18px;
+  color: #666;
+  margin: 5px 0 0;
+}
+
+/* Profile details */
+.profile-details {
+  background-color: #fff;
+  padding: 30px;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.info-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  width: 30%;
+  font-size: 20px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+  width: 65%;
+  padding: 15px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+p {
+  font-size: 18px;
+  margin: 0;
+  color: #333;
+}
+
+/* Edit button */
+.edit-button-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.edit-button,
+.save-button,
+.cancel-button {
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.edit-button {
+  background-color: green;
+  color: #fff;
+}
+
+.edit-button:hover {
+  background-color: grey;
+}
+
+.save-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.save-button:hover {
+  background-color: #1e7e34;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.cancel-button:hover {
+  background-color: #c82333;
+}

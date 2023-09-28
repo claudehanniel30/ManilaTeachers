@@ -1,0 +1,19 @@
+.notification {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+  }
+  
+  .unread {
+    background-color: #e8f7e1;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  

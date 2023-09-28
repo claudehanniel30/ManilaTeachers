@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, } from "react-router-dom";
+import ApplicantMain from "./MainPage/ApplicantMain";
+import ProfilePage from "./UserProfile/ProfilePage";
+import ScholarStatusPage from "./UserScholarshipStatus/ScholarStatusPage";
+import SubmitRequirementsPage from "./UserSubmitRequirements/SubmitRequirementsPage";
+import NotificationsPage from "./UserNotifications/NotificationPage";
+import ChatPage from "./UserMessages/ChatPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <ApplicantMain />
+        <Routes>
+          {/* Define a route for the ProfilePage component */}
+          <Route path="/UserProfile/ProfilePage" element={<ProfilePage />} />
+          <Route path="/UserScholarStatus/ScholarStatusPage " element={<ScholarStatusPage />} />
+          <Route path="/UserSubmitRequirements/SubmitRequirementsPage" element={<SubmitRequirementsPage />} />
+          <Route path="/UserNotifications/NotificationPage" element={<NotificationsPage />} />
+          <Route path="/UserMessages/ChatPage" element={<ChatPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

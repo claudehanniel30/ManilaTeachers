@@ -15,60 +15,18 @@ import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import "./ApplicantMain.css";
+import "./AdminMain.css";
 import Button from "@mui/material/Button";
-import { Link, useLocation } from "react-router-dom"; // Import useLocation
 import Typography from "@mui/material/Typography";
 
 const drawerWidth = 280;
 
-function ApplicantMain(props) {
-  const location = useLocation(); // Get the current route location
+function AdminMain(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
-  };
-
-  const getPageName = () => {
-    // Extract the page name based on the current route
-    switch (location.pathname) {
-      case "/UserProfile/ProfilePage":
-        return "Profile";
-      case "/UserScholarshipStatus/ScholarStatusPage":
-        return "Scholarship Status";
-      case "/UserSubmitRequirements/SubmitRequirementsPage":
-        return "Submit Requirements";
-      case "/UserNotifications/NotificationPage":
-        return "Notifications";
-      case "/UserMessages/ChatPage":
-        return "Messages";
-      default:
-        return "Profile";
-    }
-  };
-
-  const renderPageContent = () => {
-    // Add your page content based on the selected page
-    switch (location.pathname) {
-      case "/UserProfile/ProfilePage":
-        return <Typography variant="h4">Profile Content Here</Typography>;
-      case "/UserScholarshipStatus/ScholarStatusPage":
-        return (
-          <Typography variant="h4">Scholarship Status Content Here</Typography>
-        );
-      case "/UserSubmitRequirements/SubmitRequirementsPage":
-        return (
-          <Typography variant="h4">Submit Requirements Content Here</Typography>
-        );
-      case "/UserNotifications/NotificationPage":
-        return <Typography variant="h4">Notifications Content Here</Typography>;
-      case "/UserMessages/ChatPage":
-        return <Typography variant="h4">Messages Content Here</Typography>;
-      default:
-        return <Typography variant="h4">Default Content Here</Typography>;
-    }
   };
 
   const drawer = (
@@ -80,23 +38,22 @@ function ApplicantMain(props) {
       <Divider />
       <List>
         {[
-          { text: "Profile", link: "./UserProfile/ProfilePage" },
+          { text: "Inbox", link: "/InboxPage" },
           {
-            text: "Scholarship Status",
-            link: "/UserScholarshipStatus/ScholarStatusPage",
+            text: "Starred",
+            link: "/StarredPage",
           },
           {
-            text: "Submit Requirements",
-            link: "/UserSubmitRequirements/SubmitRequirementsPage",
+            text: "Send email",
+            link: "/SendEmailPage",
           },
           {
-            text: "Notifications",
-            link: "/UserNotifications/NotificationPage",
+            text: "Drafts",
+            link: "/DraftsPage",
           },
-          { text: "Messages", link: "/UserMessages/ChatPage" },
         ].map((item, index) => (
           <ListItem key={item.text} disablePadding>
-            <ListItemButton component={Link} to={item.link}>
+            <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
@@ -148,7 +105,7 @@ function ApplicantMain(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            {getPageName()} {/* Use the dynamically obtained page name */}
+            Admin Page
           </Typography>
         </Toolbar>
       </AppBar>
@@ -198,14 +155,15 @@ function ApplicantMain(props) {
         }}
       >
         {/* Your main content here */}
-        {renderPageContent()}
+        {/* You can add your admin-specific content here */}
+        <Typography variant="h4">Admin Content Here</Typography>
       </Box>
     </Box>
   );
 }
 
-ApplicantMain.propTypes = {
+AdminMain.propTypes = {
   window: PropTypes.func,
 };
 
-export default ApplicantMain;
+export default AdminMain;

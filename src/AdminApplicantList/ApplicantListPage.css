@@ -1,0 +1,80 @@
+/* ApplicantListPage.css */
+
+/* Center the content both horizontally and vertically */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Adjust this value as needed for your layout */
+}
+
+
+h1 {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 90%;
+  margin: 20px auto;
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Style the "Assess" button with a specific color (e.g., blue) */
+button.assess {
+  background-color: blue; /* Change to your desired color */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+/* Style the "approve" button with green color */
+button.approve {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+/* Style the "Reject" button with red color */
+button.reject {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Style the search bar and label */
+.search-bar {
+  text-align: right;
+  margin-bottom: 1px;
+}
+
+/* Style the "Search:" label */
+label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* Style the search input */
+input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 150px;
+  margin-right: 80px;
+}
+

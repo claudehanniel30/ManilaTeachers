@@ -6,19 +6,22 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import "./ApplicantMain.css";
 import Button from "@mui/material/Button";
 import { Link, useLocation } from "react-router-dom"; // Import useLocation
 import Typography from "@mui/material/Typography";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import DescriptionIcon from "@mui/icons-material/Description";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import ChatIcon from "@mui/icons-material/Chat";
 
 const drawerWidth = 280;
 
@@ -53,21 +56,17 @@ function ApplicantMain(props) {
     // Add your page content based on the selected page
     switch (location.pathname) {
       case "/UserProfile/ProfilePage":
-        return <Typography variant="h4">Profile Content Here</Typography>;
+        return <Typography variant="h4"></Typography>;
       case "/UserScholarshipStatus/ScholarStatusPage":
-        return (
-          <Typography variant="h4">Scholarship Status Content Here</Typography>
-        );
+        return <Typography variant="h4"></Typography>;
       case "/UserSubmitRequirements/SubmitRequirementsPage":
-        return (
-          <Typography variant="h4">Submit Requirements Content Here</Typography>
-        );
+        return <Typography variant="h4"></Typography>;
       case "/UserNotifications/NotificationPage":
-        return <Typography variant="h4">Notifications Content Here</Typography>;
+        return <Typography variant="h4"></Typography>;
       case "/UserMessages/ChatPage":
-        return <Typography variant="h4">Messages Content Here</Typography>;
+        return <Typography variant="h4"></Typography>;
       default:
-        return <Typography variant="h4">Default Content Here</Typography>;
+        return <Typography variant="h4"></Typography>;
     }
   };
 
@@ -80,26 +79,35 @@ function ApplicantMain(props) {
       <Divider />
       <List>
         {[
-          { text: "Profile", link: "./UserProfile/ProfilePage" },
+          {
+            text: "Profile",
+            link: "./UserProfile/ProfilePage",
+            icon: <AccountCircleIcon />,
+          },
           {
             text: "Scholarship Status",
             link: "/UserScholarshipStatus/ScholarStatusPage",
+            icon: <BookmarkIcon />,
           },
           {
             text: "Submit Requirements",
             link: "/UserSubmitRequirements/SubmitRequirementsPage",
+            icon: <DescriptionIcon />,
           },
           {
             text: "Notifications",
             link: "/UserNotifications/NotificationPage",
+            icon: <NotificationsIcon />,
           },
-          { text: "Messages", link: "/UserMessages/ChatPage" },
+          {
+            text: "Messages",
+            link: "/UserMessages/ChatPage",
+            icon: <ChatIcon />,
+          },
         ].map((item, index) => (
           <ListItem key={item.text} disablePadding>
             <ListItemButton component={Link} to={item.link}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
+              <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>
@@ -195,6 +203,7 @@ function ApplicantMain(props) {
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          marginTop: "50px",
         }}
       >
         {/* Your main content here */}

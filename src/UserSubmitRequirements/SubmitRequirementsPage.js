@@ -174,7 +174,7 @@ class SubmitRequirementsPage extends Component {
         <div className="upload-section">
           <h2>Upload Needed Files</h2>
           <div className="file-upload">
-            <label>Upload Grades (PDF, DOC, DOCX)*:</label>
+            <label>Upload Valid ID (PDF, DOC, DOCX)*:</label>
             <input type="file" accept=".pdf, .doc, .docx" />
           </div>
           <div className="file-upload">

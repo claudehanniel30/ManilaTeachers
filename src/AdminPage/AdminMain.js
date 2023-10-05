@@ -18,15 +18,31 @@ import Toolbar from "@mui/material/Toolbar";
 import "./AdminMain.css";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Link, useLocation } from "react-router-dom"; // Import useLocation
 
 const drawerWidth = 280;
 
 function AdminMain(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const location = useLocation(); // Moved useLocation to the top level
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  // Define the renderPageContent function
+  const renderPageContent = () => {
+    switch (location.pathname) {
+      case "/AdminProfile/AdminProfilePage":
+        return <Typography variant="h4"></Typography>;
+      case "/AdminApplicantList/ApplicantListPage":
+        return <Typography variant="h4"></Typography>;
+      case "/AdminApplicantRecords/ApplicantRecordsPage":
+        return <Typography variant="h4"></Typography>;
+      default:
+        return <Typography variant="h4"></Typography>;
+    }
   };
 
   const drawer = (
@@ -38,22 +54,19 @@ function AdminMain(props) {
       <Divider />
       <List>
         {[
-          { text: "Inbox", link: "/InboxPage" },
+          { text: "Admin Profile", 
+          link: "/AdminProfile/AdminProfilePage" },
           {
-            text: "Starred",
-            link: "/StarredPage",
+            text: "Applicant List",
+            link: "/AdminApplicantList/ApplicantListPage",
           },
           {
-            text: "Send email",
-            link: "/SendEmailPage",
-          },
-          {
-            text: "Drafts",
-            link: "/DraftsPage",
+            text: "Applicant Records",
+            link: "/AdminApplicantRecords/ApplicantRecordsPage",
           },
         ].map((item, index) => (
           <ListItem key={item.text} disablePadding>
-            <ListItemButton>
+            <ListItemButton component={Link} to={item.link}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
@@ -154,9 +167,8 @@ function AdminMain(props) {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
-        {/* Your main content here */}
-        {/* You can add your admin-specific content here */}
-        <Typography variant="h4">Admin Content Here</Typography>
+        {/* Render the page content */}
+        {renderPageContent()}
       </Box>
     </Box>
   );

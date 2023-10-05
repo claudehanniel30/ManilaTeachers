@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjust this value as needed for your layout */
+  }
+
+/* ApplicantRecordsPage.css */
+.applicant-table {
+  border-collapse: collapse;
+  width: 90%;
+  margin: 20px auto;
+}
+
+.applicant-table th,
+.applicant-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.applicant-table th {
+  background-color: #f2f2f2;
+}
+
+.status-button {
+  background-color: green;
+  color: #fff;
+  padding: 6px 10px; /* Adjust padding to make the background smaller */
+  border: none;
+  border-radius: 5px;
+  cursor: not-allowed; /* To make it look like a button but not clickable */
+}

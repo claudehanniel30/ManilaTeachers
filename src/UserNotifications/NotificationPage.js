@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
+import './NotificationPage.css';
 
-const Notification = ({ notification, onMarkAsRead }) => {
-  // Check if the notification prop is undefined or null
-  if (!notification) {
-    return null; // Return null to render nothing if the notification is missing
+class NotificationPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      announcements: [
+        { id: 1, title: 'Scholarship 1', description: 'Description for Scholarship 1' },
+        { id: 2, title: 'Scholarship 2', description: 'Description for Scholarship 2' },
+        // Add more scholarship announcements here
+      ],
+    };
   }
 
-  const { title, message, read } = notification;
+  render() {
+    return (
+      <div className="announcements-container">
+        <h1 className="announcements-title">Scholarship Announcements</h1>
+        <ul className="announcements-list">
+          {this.state.announcements.map((announcement) => (
+            <li key={announcement.id} className="announcement-item">
+              <h3 className="announcement-title">{announcement.title}</h3>
+              <p className="announcement-description">{announcement.description}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
 
-  return (
-    <div className={`notification ${read ? 'read' : 'unread'}`}>
-      <h3>{title}</h3>
-      <p>{message}</p>
-      {!read && (
-        <button onClick={() => onMarkAsRead(notification)}>Mark as Read</button>
-      )}
-    </div>
-  );
-};
-
-export default Notification;
+export default NotificationPage;

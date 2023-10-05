@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
-import './UserHome.css'; // You can define your own CSS styles
+import React, { useState } from "react";
+import Modal from "react-modal";
+import "./UserHome.css"; // You can define your own CSS styles
 
-Modal.setAppElement('#root'); // Set the root element for the modal
+Modal.setAppElement("#root"); // Set the root element for the modal
 
 function UserHome() {
   const [signInModalIsOpen, setSignInModalIsOpen] = useState(false);
   const [signUpModalIsOpen, setSignUpModalIsOpen] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const openSignInModal = () => {
     setSignInModalIsOpen(true);
@@ -50,22 +50,51 @@ function UserHome() {
           <img src="/mtlogo.jpg" alt="Logo" className="logo" />
         </div>
         <ul className="nav-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/contact">Contact Us</a></li>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/about">About Us</a>
+          </li>
+          <li>
+            <a href="/contact">Contact Us</a>
+          </li>
         </ul>
         <div className="nav-buttons">
-          <button onClick={openSignInModal} className="sign-in-button">Sign In</button>
-          <button onClick={openSignUpModal} className="sign-up-button">Sign Up</button>
+          <button onClick={openSignInModal} className="sign-in-button">
+            Sign In
+          </button>
+          <button onClick={openSignUpModal} className="sign-up-button">
+            Sign Up
+          </button>
         </div>
       </nav>
+      <img src="/mtbg.jpg" alt="Background" className="background-image" />
+      <img src="/mtbg1.jpg" alt="Background" className="background-image1" />
+
+      <div className="content-section">
+        <div className="line">
+          <p>Get scholarships and achieve your education goals</p>
+        </div>
+        <h1>Achieve your Dreams</h1>
+        <p>
+          Access scholar;lships that match <br />
+          your education financial needs <br />
+          and achieve your goals.
+        </p>
+        <button className="btn">Get Started</button>
+        <p>Find Us:</p>
+      </div>
+
       <Modal
         isOpen={signInModalIsOpen}
         onRequestClose={closeSignInModal}
         className="modal"
         overlayClassName="overlay"
       >
-        {/* Sign In Modal Content */}
+        <button onClick={closeSignInModal} className="exit-button">
+          x
+        </button>
         <h2>Sign In to Your Account</h2>
         <div className="form">
           <label>Email Address</label>
@@ -82,9 +111,12 @@ function UserHome() {
             onChange={(e) => setPassword(e.target.value)}
             className="form-input"
           />
-          <button onClick={handleSignIn} className="form-button">Sign In</button>
-          <p>Don't have an account? <a href="/signup">Sign up</a></p>
-          <button onClick={closeSignInModal} className="close-button">Close</button>
+          <button onClick={handleSignIn} className="form-button">
+            Sign In
+          </button>
+          <p>
+            Don't have an account? <a href="/signup">Sign up</a>
+          </p>
         </div>
       </Modal>
 
@@ -95,7 +127,9 @@ function UserHome() {
         className="modal"
         overlayClassName="overlay"
       >
-        {/* Sign Up Modal Content */}
+        <button onClick={closeSignUpModal} className="exit-button">
+          x
+        </button>
         <h2>Sign Up for an Account</h2>
         <div className="form">
           <div className="form-row">
@@ -124,14 +158,14 @@ function UserHome() {
           </div>
           <div className="form-group1">
             <div className="form-group1">
-          <label>Email Address</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="form-input"
-          />
-          </div>
+              <label>Email Address</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="form-input"
+              />
+            </div>
           </div>
           <div className="form-row">
             <div className="form-column">
@@ -157,9 +191,12 @@ function UserHome() {
               </div>
             </div>
           </div>
-          <button onClick={handleSignUp} className="form-button">Sign Up</button>
-          <p>Already have an account? <a href="/signin">Sign in</a></p>
-          <button onClick={closeSignUpModal} className="close-button">Close</button>
+          <button onClick={handleSignUp} className="form-button">
+            Sign Up
+          </button>
+          <p>
+            Already have an account? <a href="/signin">Sign in</a>
+          </p>
         </div>
       </Modal>
 

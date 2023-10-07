@@ -13,8 +13,8 @@ const ChatPage = () => {
       id: messages.length + 1,
       text: currentMessage,
       sender: "You", // Replace with actual sender info
-      time: new Date().toLocaleTimeString(),
       date: new Date().toLocaleDateString(), // Add date
+      time: new Date().toLocaleTimeString(), // Add time
     };
 
     setMessages([...messages, newMessage]);
@@ -23,12 +23,17 @@ const ChatPage = () => {
 
   return (
     <div className="chat-container">
-      <div className="header">
-        <h1>Ask Us</h1>
-        <p>Manila Teacher Partylist</p>
+      <div className="chat-header">
+        <div className="header-title">
+          <h1>Messaging App</h1>
+          <p>Online</p>
+        </div>
+        <div className="header-actions">
+          {/* Add header actions like a search bar or settings */}
+        </div>
       </div>
 
-      <div className="chat">
+      <div className="chat-messages">
         <div className="message-list">
           {messages.map((message) => (
             <div
@@ -48,15 +53,18 @@ const ChatPage = () => {
                   </div>
                   <div className="admin-details">
                     <div className="admin-name">Admin</div>
-                    <div className="admin-time">{message.time}</div>
                   </div>
                 </div>
               )}
-              <div className={`message-text ${message.sender === "You" ? "you" : "admin"}`}>
+              <div
+                className={`message-text ${
+                  message.sender === "You" ? "you" : "admin"
+                }`}
+              >
                 {message.text}
-                <div className="message-metadata">
-                  {message.date} at {message.time}
-                </div>
+              </div>
+              <div className="message-metadata">
+                {message.date} at {message.time}
               </div>
             </div>
           ))}
@@ -64,28 +72,20 @@ const ChatPage = () => {
 
         {selectedMessage !== null && (
           <div className="message-box">
-            <div className="message-header">
-              <div className="admin-profile-pic">
-                <img
-                  src="admin-profile-pic-url" // Replace with actual URL
-                  alt="Admin"
-                />
-              </div>
-              <div className="admin-details">
-                <div className="admin-name">Admin</div>
-                <div className="admin-time">
-                  {
-                    messages.find((message) => message.id === selectedMessage)
-                      .time
-                  }
-                </div>
-              </div>
+            <div className="admin-profile-pic">
+              <img
+                src="admin-profile-pic-url" // Replace with actual URL
+                alt="Admin"
+              />
+            </div>
+            <div className="admin-details">
+              <div className="admin-name">Admin</div>
             </div>
             <div className="message-text">
               {messages.find((message) => message.id === selectedMessage).text}
-              <div className="message-metadata">
-                {messages.find((message) => message.id === selectedMessage).date} at {messages.find((message) => message.id === selectedMessage).time}
-              </div>
+            </div>
+            <div className="message-metadata">
+              {messages.find((message) => message.id === selectedMessage).date} at {messages.find((message) => message.id === selectedMessage).time}
             </div>
           </div>
         )}

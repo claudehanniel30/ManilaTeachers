@@ -4,12 +4,12 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import AdminRoute from "./AdminRoute";
 
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AdminRoute />
   </React.StrictMode>
+  
 );
 
 // If you want to start measuring performance in your app, pass a function

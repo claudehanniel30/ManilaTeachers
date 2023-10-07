@@ -204,6 +204,7 @@ function ApplicantMain(props) {
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           marginTop: "50px",
+          marginLeft: "50px",
         }}
       >
         {/* Your main content here */}

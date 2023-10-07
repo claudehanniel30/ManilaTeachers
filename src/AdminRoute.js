@@ -8,7 +8,7 @@ import ApplicantRecordsPage from "./AdminApplicantRecords/ApplicantRecordsPage";
 function AdminRoute() {
   const getPageName = (pathname) => {
     switch (pathname) {
-      case "/AdminPage/AdminProfilePage":
+      case "/AdminProfile/AdminProfilePage":
         return "Admin Profile";
       case "/AdminApplicantList/ApplicantListPage":
         return "Applicant List";
@@ -26,7 +26,7 @@ function AdminRoute() {
         <Routes>
           <Route path="/" element={<AdminProfilePage />} />
           <Route
-            path="/AdminPage/AdminProfilePage"
+            path="/AdminProfile/AdminProfilePage"
             element={<AdminProfilePage />}
           />
           <Route

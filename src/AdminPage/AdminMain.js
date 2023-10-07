@@ -18,20 +18,34 @@ import Toolbar from "@mui/material/Toolbar";
 import "./AdminMain.css";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Link, useLocation } from "react-router-dom"; // Import useLocation
+import { Link, useLocation } from "react-router-dom";
+import Grid from "@mui/material/Grid"; // Import Grid
 
 const drawerWidth = 280;
 
 function AdminMain(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const location = useLocation(); // Moved useLocation to the top level
+  const location = useLocation();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  // Define the renderPageContent function
+  const getPageName = () => {
+    // Extract the page name based on the current route
+    switch (location.pathname) {
+      case "/AdminProfile/AdminProfilePage":
+        return "Admin Profile";
+      case "/AdminApplicantList/ApplicantListPage":
+        return "Applicant List";
+      case "/AdminApplicantRecords/ApplicantRecordsPage":
+        return "Applicant Records";
+      default:
+        return "Admin Profile";
+    }
+  };
+
   const renderPageContent = () => {
     switch (location.pathname) {
       case "/AdminProfile/AdminProfilePage":
@@ -54,8 +68,10 @@ function AdminMain(props) {
       <Divider />
       <List>
         {[
-          { text: "Admin Profile", 
-          link: "/AdminProfile/AdminProfilePage" },
+          {
+            text: "Admin Profile",
+            link: "/AdminProfile/AdminProfilePage",
+          },
           {
             text: "Applicant List",
             link: "/AdminApplicantList/ApplicantListPage",
@@ -63,6 +79,14 @@ function AdminMain(props) {
           {
             text: "Applicant Records",
             link: "/AdminApplicantRecords/ApplicantRecordsPage",
+          },
+          {
+            text: "Messages",
+            link: "/",
+          },
+          {
+            text: "Announcements",
+            link: "/",
           },
         ].map((item, index) => (
           <ListItem key={item.text} disablePadding>
@@ -99,77 +123,84 @@ function AdminMain(props) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "green",
-        }}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+      <Grid container>
+        <Grid item xs={12}>
+          <AppBar
+            position="fixed"
+            sx={{
+              width: { sm: `calc(100% - ${drawerWidth}px)` },
+              ml: { sm: `${drawerWidth}px` },
+              backgroundColor: "green",
+            }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Admin Page
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Box
-        component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
-      >
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: "none", sm: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-          open
-        >
-          {drawer}
-        </Drawer>
-      </Box>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-        }}
-      >
-        {/* Render the page content */}
-        {renderPageContent()}
-      </Box>
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ mr: 2, display: { sm: "none" } }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" noWrap component="div">
+                {getPageName()}
+              </Typography>
+            </Toolbar>
+          </AppBar>
+        </Grid>
+        <Grid item xs={12}>
+          <Box
+            component="nav"
+            sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+            aria-label="mailbox folders"
+          >
+            <Drawer
+              container={container}
+              variant="temporary"
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+              ModalProps={{
+                keepMounted: true,
+              }}
+              sx={{
+                display: { xs: "block", sm: "none" },
+                "& .MuiDrawer-paper": {
+                  boxSizing: "border-box",
+                  width: drawerWidth,
+                },
+              }}
+            >
+              {drawer}
+            </Drawer>
+            <Drawer
+              variant="permanent"
+              sx={{
+                display: { xs: "none", sm: "block" },
+                "& .MuiDrawer-paper": {
+                  boxSizing: "border-box",
+                  width: drawerWidth,
+                },
+              }}
+              open
+            >
+              {drawer}
+            </Drawer>
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <Box
+            component="main"
+            sx={{
+              flexGrow: 1,
+              p: 3,
+              width: { sm: `calc(100% - ${drawerWidth}px)` },
+            }}
+          >
+            {renderPageContent()}
+          </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 }

@@ -70,6 +70,15 @@ function UserHome() {
         </div>
       </nav>
       <img src="/mtbg.jpg" alt="Background" className="background-image" />
+      <div className="content-inside-image">
+        <h2>Find scholarships<br />
+        and achieve your goals.</h2>
+        <p>Get financial did to cater for your studies.<br />
+        We provide a collection of scholarships application that suit your needs.
+        </p>
+        
+        <button className="btn">Get Started</button>
+      </div>
       <img src="/mtbg1.jpg" alt="Background" className="background-image1" />
 
       <div className="content-section">
@@ -78,12 +87,17 @@ function UserHome() {
         </div>
         <h1>Achieve your Dreams</h1>
         <p>
-          Access scholar;lships that match <br />
+          Access scholarships that match <br />
           your education financial needs <br />
           and achieve your goals.
         </p>
+
         <button className="btn">Get Started</button>
-        <p>Find Us:</p>
+        
+        <p>
+          Find Us:{" "}
+          <a href="https://www.facebook.com/sirmoi.mtbatangas">Facebook</a>
+        </p>
       </div>
 
       <Modal

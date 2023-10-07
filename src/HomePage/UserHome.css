@@ -229,8 +229,18 @@ body {
   /* Set the background size and position */
   background-size: cover;
   background-position: center;
-  width: 99.99%;
+  max-width: 99.99%;
   min-height: calc(110vh - 56px); /* Subtract the navbar height if you have one */
+}
+
+.content-inside-image {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white background */
+  padding: 20px;
+  border-radius: 5px;
 }
 
 .background-image1 {

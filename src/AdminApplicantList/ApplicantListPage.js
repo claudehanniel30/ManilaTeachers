@@ -15,6 +15,7 @@ class ApplicantListPage extends Component {
           email: "john.doe@example.com",
           requirements: "Transcript, Essay",
           dateTimeSubmitted: "10/01/2023 14:30",
+          requirementsComplete: true, // Add this property for requirements completion
         },
         // Add more application data as needed
       ],
@@ -76,7 +77,14 @@ class ApplicantListPage extends Component {
                 <td>{application.fullName}</td>
                 <td>{application.homeAddress}</td>
                 <td>{application.email}</td>
-                <td>{application.requirements}</td>
+                <td>
+                  {/* Conditionally render the requirements text in green */}
+                  {application.requirementsComplete ? (
+                    <span style={{ color: "green" }}>Complete</span>
+                  ) : (
+                    <span style={{ color: "red" }}>Not Complete</span>
+                  )}
+                </td>
                 <td>{application.dateTimeSubmitted}</td>
                 <td>
                   {/* Implement your action buttons here */}

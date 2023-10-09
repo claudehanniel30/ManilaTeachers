@@ -21,12 +21,17 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-container">
-      <div className="profile-header">
-        <img src={user.profilePicture} alt="User" className="profile-picture" />
-        <div className="profile-info">
-          <h1>{user.name}</h1>
-          <p>@{user.username}</p>
+      <div className="header-container">
+        <div className="profile-header">
+          <img src={user.profilePicture} alt="User" className="profile-picture" />
+          <div className="profile-info">
+            <h1>{user.name}</h1>
+            <p>@{user.username}</p>
+          </div>
         </div>
+        <button className="edit-button" onClick={toggleEditMode}>
+          {isEditMode ? "Save Changes" : "Edit Profile"}
+        </button>
       </div>
 
       <div className="profile-details">
@@ -95,12 +100,6 @@ const ProfilePage = () => {
             <p>{user.age}</p>
           )}
         </div>
-      </div>
-
-      <div className="edit-button-container">
-        <button className="edit-button" onClick={toggleEditMode}>
-          {isEditMode ? "Save Changes" : "Edit Profile"}
-        </button>
       </div>
     </div>
   );

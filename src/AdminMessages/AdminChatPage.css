@@ -1,0 +1,168 @@
+/* AdminChatPage.css */
+
+/* Reset some default styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Chat container */
+  .chat-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4; /* Light gray background color */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  /* Chat header */
+  .chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: green; /* Blue header background color */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .header-title {
+    flex-grow: 1;
+  }
+  
+  .header-title h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .header-title p {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  /* Chat messages area */
+  .chat-messages {
+    background-color: #fff; /* White message background */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row; /* Display applicants and messages side by side */
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+  }
+  
+  /* Applicant list */
+  .applicant-list {
+    width: 30%; /* Adjust the width as needed */
+    padding: 30px;
+    border-right: 2px solid #ccc; /* Add a border to separate applicants */
+    overflow-y: auto;
+  }
+  
+  .applicant-list h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .applicant-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .applicant-list li {
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .applicant-list li.selected {
+    background-color: #e2e2e2; /* Highlight the selected applicant */
+  }
+  
+  /* Message list */
+  .message-list {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  /* Individual message */
+  .message {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Admin message */
+  .admin-message {
+    align-self: flex-end; /* Place admin messages on the right */
+    background-color: #c8e6c9; /* Light green admin message background */
+  }
+  
+  /* Message sender */
+  .message-sender {
+    font-weight: bold;
+  }
+  
+  /* Message text */
+  .message-text {
+    margin-top: 5px;
+    background-color: #e2e2e2; /* Highlight the message background */
+    padding: 5px 10px; /* Adjust padding to highlight only the message */
+    align-self: flex-end; /* Place user messages on the right */
+  }
+  
+  /* Message metadata (time and date) */
+  .message-metadata {
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+    margin-top: 5px; /* Move date and time below the message */
+  }
+  
+  /* Message box */
+  .message-box {
+    display: none;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+  }
+  
+  /* Message input */
+  .message-input {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+  }
+  
+  .message-input input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .message-input button {
+    background-color: green; /* Blue send button color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .message-input button:hover {
+    background-color: yellowgreen; /* Darker blue hover color */
+  }
+  

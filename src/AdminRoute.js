@@ -1,19 +1,23 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AdminMain from "./AdminPage/AdminMain";
-import AdminProfilePage from "./AdminProfile/AdminProfilePage";
 import ApplicantListPage from "./AdminApplicantList/ApplicantListPage";
 import ApplicantRecordsPage from "./AdminApplicantRecords/ApplicantRecordsPage";
+import CreateAnnouncementPage from "./AdminCreateAnnouncement/CreateAnnouncementPage";
+import AdminChatPage from "./AdminMessages/AdminChatPage";
 
 function AdminRoute() {
   const getPageName = (pathname) => {
     switch (pathname) {
-      case "/AdminProfile/AdminProfilePage":
-        return "Admin Profile";
+      
       case "/AdminApplicantList/ApplicantListPage":
         return "Applicant List";
       case "/AdminApplicantRecords/ApplicantRecordsPage":
         return "Applicant Records";
+      case "/AdminMessages/AdminChatPage":
+        return "Messages";
+      case "/AdminCreateAnnouncement/CreateAnnouncementPage":
+        return "Create Announcements";
       default:
         return "Admin Profile";
     }
@@ -22,25 +26,31 @@ function AdminRoute() {
   return (
     <Router>
       <div>
-        <AdminMain pageName={getPageName(window.location.pathname)} />
-        <Routes>
-          <Route path="/" element={<AdminProfilePage />} />
-          <Route
-            path="/AdminProfile/AdminProfilePage"
-            element={<AdminProfilePage />}
-          />
-          <Route
-            path="/AdminApplicantList/ApplicantListPage"
-            element={<ApplicantListPage />}
-          />
-          <Route
-            path="/AdminApplicantRecords/ApplicantRecordsPage"
-            element={<ApplicantRecordsPage />}
-          />
-        </Routes>
+        <AdminMain pageName={getPageName(window.location.pathname)}>
+          {/* Include the content components as children */}
+          <Routes>
+            <Route path="/" element={<ApplicantListPage />} />
+            {/* Set the default route to ApplicantListPage */}
+            <Route
+              path="/AdminApplicantList/ApplicantListPage"
+              element={<ApplicantListPage />}
+            />
+            <Route
+              path="/AdminApplicantRecords/ApplicantRecordsPage"
+              element={<ApplicantRecordsPage />}
+            />
+            <Route
+              path="/AdminCreateAnnouncement/CreateAnnouncementPage"
+              element={<CreateAnnouncementPage />}
+            />
+            <Route
+              path="/AdminMessages/AdminChatPage"
+              element={<AdminChatPage />}
+            />
+          </Routes>
+        </AdminMain>
       </div>
     </Router>
   );
 }
-
 export default AdminRoute;

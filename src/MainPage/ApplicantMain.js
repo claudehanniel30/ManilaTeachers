@@ -27,7 +27,7 @@ const drawerWidth = 280;
 
 function ApplicantMain(props) {
   const location = useLocation(); // Get the current route location
-  const { window } = props;
+  const { window, children } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -49,24 +49,6 @@ function ApplicantMain(props) {
         return "Messages";
       default:
         return "Profile";
-    }
-  };
-
-  const renderPageContent = () => {
-    // Add your page content based on the selected page
-    switch (location.pathname) {
-      case "/UserProfile/ProfilePage":
-        return <Typography variant="h4"></Typography>;
-      case "/UserScholarshipStatus/ScholarStatusPage":
-        return <Typography variant="h4"></Typography>;
-      case "/UserSubmitRequirements/SubmitRequirementsPage":
-        return <Typography variant="h4"></Typography>;
-      case "/UserNotifications/NotificationPage":
-        return <Typography variant="h4"></Typography>;
-      case "/UserMessages/ChatPage":
-        return <Typography variant="h4"></Typography>;
-      default:
-        return <Typography variant="h4"></Typography>;
     }
   };
 
@@ -202,13 +184,13 @@ function ApplicantMain(props) {
         sx={{
           flexGrow: 1,
           p: 3,
+          paddingTop: "90px", // Adjust top padding to avoid overlap
+          paddingLeft: "16px", // Adjust left padding to avoid overlap
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          marginTop: "50px",
-          marginLeft: "50px",
         }}
       >
-        {/* Your main content here */}
-        {renderPageContent()}
+        {/* Render the page content */}
+        {children}
       </Box>
     </Box>
   );
@@ -216,6 +198,7 @@ function ApplicantMain(props) {
 
 ApplicantMain.propTypes = {
   window: PropTypes.func,
+  children: PropTypes.node,
 };
 
 export default ApplicantMain;

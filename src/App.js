@@ -30,25 +30,27 @@ function App() {
     <Router>
       <div>
         {/* Pass the pageName prop here */}
-        <ApplicantMain pageName={getPageName(window.location.pathname)} />
-        <Routes>
-          <Route path="/" element={<ProfilePage />} />{" "}
-          {/* Set the default route to ProfilePage */}
-          <Route path="/UserProfile/ProfilePage" element={<ProfilePage />} />
-          <Route
-            path="/UserScholarshipStatus/ScholarStatusPage"
-            element={<ScholarStatusPage />}
-          />
-          <Route
-            path="/UserSubmitRequirements/SubmitRequirementsPage"
-            element={<SubmitRequirementsPage />}
-          />
-          <Route
-            path="/UserNotifications/NotificationPage"
-            element={<NotificationsPage />}
-          />
-          <Route path="/UserMessages/ChatPage" element={<ChatPage />} />
-        </Routes>
+        <ApplicantMain pageName={getPageName(window.location.pathname)}>
+          {/* Use the children prop to render dynamic content */}
+          <Routes>
+            <Route path="/" element={<ProfilePage />} />{" "}
+            {/* Set the default route to ProfilePage */}
+            <Route path="/UserProfile/ProfilePage" element={<ProfilePage />} />
+            <Route
+              path="/UserScholarshipStatus/ScholarStatusPage"
+              element={<ScholarStatusPage />}
+            />
+            <Route
+              path="/UserSubmitRequirements/SubmitRequirementsPage"
+              element={<SubmitRequirementsPage />}
+            />
+            <Route
+              path="/UserNotifications/NotificationPage"
+              element={<NotificationsPage />}
+            />
+            <Route path="/UserMessages/ChatPage" element={<ChatPage />} />
+          </Routes>
+        </ApplicantMain>
       </div>
     </Router>
   );

@@ -18,12 +18,17 @@ import Toolbar from "@mui/material/Toolbar";
 import "./AdminMain.css";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import ListIcon from "@mui/icons-material/List";
+import RecordIcon from "@mui/icons-material/RecordVoiceOver";
+import ChatIcon from "@mui/icons-material/Chat";
+import AnnouncementIcon from "@mui/icons-material/Announcement";
 import { Link, useLocation } from "react-router-dom"; // Import useLocation
+
 
 const drawerWidth = 280;
 
 function AdminMain(props) {
-  const { window } = props;
+  const { window, children } = props; // Accept children elements
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const location = useLocation(); // Moved useLocation to the top level
 
@@ -31,31 +36,19 @@ function AdminMain(props) {
     setMobileOpen(!mobileOpen);
   };
 
-    const getPageName = () => {
-      // Extract the page name based on the current route
-      switch (location.pathname) {
-        case "/AdminProfile/AdminProfilePage":
-          return "Admin Profile";
-        case "/AdminApplicantList/ApplicantListPage":
-          return "Applicant List";
-        case "/AdminApplicantRecords/ApplicantRecordsPage":
-          return "Applicant Records";
-        default:
-          return "Admin Profile";
-      } 
-    };
-    
-
-  const renderPageContent = () => {
+  const getPageName = () => {
+    // Extract the page name based on the current route
     switch (location.pathname) {
-      case "/AdminProfile/AdminProfilePage":
-        return <Typography variant="h4"></Typography>;
       case "/AdminApplicantList/ApplicantListPage":
-        return <Typography variant="h4"></Typography>;
+        return "Applicant List";
       case "/AdminApplicantRecords/ApplicantRecordsPage":
-        return <Typography variant="h4"></Typography>;
+        return "Applicant Records";
+      case "/AdminMessages/AdminChatPage":
+        return "Messages";
+      case "/AdminCreateAnnouncement/CreateAnnouncementPage":
+        return "Create Announcements";
       default:
-        return <Typography variant="h4"></Typography>;
+        return "Applicant List";
     }
   };
 
@@ -68,23 +61,25 @@ function AdminMain(props) {
       <Divider />
       <List>
         {[
-          { text: "Admin Profile", 
-          link: "/AdminProfile/AdminProfilePage" },
           {
             text: "Applicant List",
             link: "/AdminApplicantList/ApplicantListPage",
+            icon: <ListIcon />
           },
           {
             text: "Applicant Records",
             link: "/AdminApplicantRecords/ApplicantRecordsPage",
+            icon: <RecordIcon />
           },
           {
             text: "Messages",
-            link: "/",
+            link: "/AdminMessages/AdminChatPage",
+            icon: <ChatIcon />,
           },
           {
-            text: "Announcements",
-            link: "/",
+            text: "Create Announcements",
+            link: "/AdminCreateAnnouncement/CreateAnnouncementPage",
+            icon: <AnnouncementIcon />,
           },
 
         ].map((item, index) => (
@@ -141,7 +136,7 @@ function AdminMain(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-          {getPageName()} {/* Use the dynamically obtained page name */}
+            {getPageName()} {/* Use the dynamically obtained page name */}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -187,11 +182,13 @@ function AdminMain(props) {
         sx={{
           flexGrow: 1,
           p: 3,
+          paddingTop: "90px", // Adjust top padding to avoid overlap
+          paddingLeft: "16px", // Adjust left padding to avoid overlap
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
         {/* Render the page content */}
-        {renderPageContent()}
+        {children} {/* Render the children elements */}
       </Box>
     </Box>
   );
@@ -199,6 +196,7 @@ function AdminMain(props) {
 
 AdminMain.propTypes = {
   window: PropTypes.func,
+  children: PropTypes.node, // Add children prop
 };
 
 export default AdminMain;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import "./UserHome.css"; // You can define your own CSS styles
 
+
 Modal.setAppElement("#root"); // Set the root element for the modal
 
 function UserHome() {
@@ -73,11 +74,9 @@ function UserHome() {
       <div className="content-inside-image">
         <h2>Find scholarships<br />
         and achieve your goals.</h2>
-        <p>Get financial did to cater for your studies.<br />
-        We provide a collection of scholarships application that suit your needs.
+        <p>Get financial aid to cater for your studies.<br />
+        We provide a collection of scholarships applications that suit your needs.
         </p>
-        
-        <button className="btn">Get Started</button>
       </div>
       <img src="/mtbg1.jpg" alt="Background" className="background-image1" />
 
@@ -91,8 +90,6 @@ function UserHome() {
           your education financial needs <br />
           and achieve your goals.
         </p>
-
-        <button className="btn">Get Started</button>
         
         <p>
           Find Us:{" "}
@@ -213,8 +210,6 @@ function UserHome() {
           </p>
         </div>
       </Modal>
-
-      {/* The rest of your homepage content */}
     </div>
   );
 }

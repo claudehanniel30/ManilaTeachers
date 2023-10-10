@@ -78,3 +78,10 @@ input[type="text"] {
   margin-right: 80px;
 }
 
+.total-applicants {
+  text-align: left; /* Align the text to the left */
+  margin-bottom: 10px; /* Add some spacing below the text */
+  font-weight: bold; /* Make the text bold */
+  font-size: 18px; /* Adjust the font size as needed */
+  color: #333; /* Text color */
+}

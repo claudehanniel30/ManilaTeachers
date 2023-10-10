@@ -1,168 +1,208 @@
 /* AdminChatPage.css */
 
-/* Reset some default styles */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+/* Container for the entire chat page */
+.chat-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+/* Content container for the applicants list and message modal */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px; /* Adjust the maximum width as needed */
+  margin: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  /* Add the following properties to make it fixed size */
+  min-height: 600px; /* Set the minimum height as needed */
+  max-height: 600px; /* Set the maximum height as needed */
+  overflow: hidden; /* Hide overflow content */
+}
+
+/* Container for the applicants list */
+.applicant-list-container {
+  background-color: #f5f5f5;
+  padding: 20px;
+  max-width: 800px; /* Set the maximum width for the applicants list */
+  width: 100%;
+  min-height: 600px;
+  max-height: 600px; /* Fill the entire content container height */
+  overflow-y: auto;
+  border: 1px solid #ddd; /* Add a border */
+  border-radius: 5px;
+}
+
+
+.applicant-list h2 {
+  font-size: 32px;
+  margin: 0;
+}
+
+/* Styles for the applicants list */
+.applicant-list ul {
+  list-style-type: none;
+  padding: 0;
+  border-radius: 1px solid #007bff;
+}
+
+.applicant-list li {
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.applicant-list li:hover {
+  background-color: grey;
+}
+
+.applicant-list li.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+  /* Message modal styles */
+.message-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 53%; /* Center vertically */
+  left: 60%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+  width: 1000px;
+  height: 600px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.message-modal-content {
+  width: 100%; /* Set the fixed width for the modal */
+  height: 100%; /* Set the fixed height for the modal */
+  max-width: 1000px; /* Add a max width to prevent excessive width */
+  max-height: 600px; /* Add a max height to prevent excessive height */
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Close button for the message modal */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  outline: none;
+}
+
+/* Header styles for the message modal */
+.message-modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Message list styles */
+.message-list {
+  max-height: 400px; /* Adjust the maximum height as needed */
+  overflow-y: auto; 
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column-reverse; /* Display messages from bottom to top */
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+.message-list::-webkit-scrollbar {
+  width: 0.5em;
+}
+.message-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.message-list::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Hide scrollbar for Firefox */
+.message-list {
+  scrollbar-width: thin;
+}
+
+.message-list::-webkit-scrollbar-thumb:vertical {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.message {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end; /* Align applicant messages to the left */
+}
+
+/* Admin message styles */
+.admin-message {
+  margin-left: auto; /* Align admin messages to the right */
+  background-color: #c8e6c9;
+  color: #000; /* Set text color for admin messages */
+}
+
+/* Message text styles */
+.message-text {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+  word-wrap: break-word;
+}
+
+/* Message input styles */
+.message-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space evenly between input and button */
+  margin-top: 10px; /* Add margin to separate from the message list */
+  margin-bottom: 10px; /* Add margin at the bottom */
+}
+
+.message-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.message-input button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.message-input button:hover {
+  background-color: #0056b3;
+}
+
+/* Add more styles as needed */
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .content-container {
+    flex-direction: column-reverse;
   }
-  
-  /* Chat container */
-  .chat-container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4; /* Light gray background color */
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  /* Chat header */
-  .chat-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: green; /* Blue header background color */
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 10px 10px 0 0;
-  }
-  
-  .header-title {
-    flex-grow: 1;
-  }
-  
-  .header-title h1 {
-    font-size: 24px;
-    margin: 0;
-  }
-  
-  .header-title p {
-    font-size: 14px;
-    margin: 0;
-  }
-  
-  /* Chat messages area */
-  .chat-messages {
-    background-color: #fff; /* White message background */
-    flex-grow: 1;
-    display: flex;
-    flex-direction: row; /* Display applicants and messages side by side */
-    border-radius: 0 0 10px 10px;
-    overflow: hidden;
-  }
-  
-  /* Applicant list */
-  .applicant-list {
-    width: 30%; /* Adjust the width as needed */
-    padding: 30px;
-    border-right: 2px solid #ccc; /* Add a border to separate applicants */
-    overflow-y: auto;
-  }
-  
-  .applicant-list h2 {
-    margin: 0;
-    font-size: 18px;
-  }
-  
-  .applicant-list ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .applicant-list li {
-    margin-bottom: 10px;
-    cursor: pointer;
-    padding: 5px;
-  }
-  
-  .applicant-list li.selected {
-    background-color: #e2e2e2; /* Highlight the selected applicant */
-  }
-  
-  /* Message list */
-  .message-list {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: auto;
-  }
-  
-  /* Individual message */
-  .message {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  
-  /* Admin message */
-  .admin-message {
-    align-self: flex-end; /* Place admin messages on the right */
-    background-color: #c8e6c9; /* Light green admin message background */
-  }
-  
-  /* Message sender */
-  .message-sender {
-    font-weight: bold;
-  }
-  
-  /* Message text */
-  .message-text {
-    margin-top: 5px;
-    background-color: #e2e2e2; /* Highlight the message background */
-    padding: 5px 10px; /* Adjust padding to highlight only the message */
-    align-self: flex-end; /* Place user messages on the right */
-  }
-  
-  /* Message metadata (time and date) */
-  .message-metadata {
-    font-size: 12px;
-    color: #888;
-    text-align: right;
-    margin-top: 5px; /* Move date and time below the message */
-  }
-  
-  /* Message box */
-  .message-box {
-    display: none;
-    padding: 20px;
-    border-top: 1px solid #ccc;
-    background-color: #fff;
-  }
-  
-  /* Message input */
-  .message-input {
-    background-color: #fff;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    position: sticky;
-    bottom: 0;
-  }
-  
-  .message-input input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    outline: none;
-  }
-  
-  .message-input button {
-    background-color: green; /* Blue send button color */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .message-input button:hover {
-    background-color: yellowgreen; /* Darker blue hover color */
-  }
-  
+}

@@ -17,6 +17,7 @@ function AdminAnnouncements() {
   const [announcements, setAnnouncements] = useState([]);
   const [announcementText, setAnnouncementText] = useState("");
   const [editedAnnouncementId, setEditedAnnouncementId] = useState(null);
+  const [commonTitle, setCommonTitle] = useState(""); // Add common title state
 
   // Define the maximum input length
   const maxInputLength = 3000;
@@ -26,12 +27,14 @@ function AdminAnnouncements() {
 
     const newAnnouncement = {
       id: Date.now(),
+      title: commonTitle, // Use the common title
       text: announcementText,
       date: new Date().toLocaleDateString(),
     };
 
     setAnnouncements([...announcements, newAnnouncement]);
     setAnnouncementText("");
+    setCommonTitle(""); // Clear the title input after adding an announcement
   };
 
   const handleEdit = (id) => {
@@ -48,6 +51,20 @@ function AdminAnnouncements() {
         <Typography variant="h4" gutterBottom>
           Announcements
         </Typography>
+
+        {/* Input for the common title */}
+        <Input
+          fullWidth
+          placeholder="Enter Title" // Set the placeholder text
+          value={commonTitle}
+          onChange={(e) => setCommonTitle(e.target.value)}
+          style={{
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+            padding: "8px",
+            marginBottom: "16px", // Add margin bottom
+          }}
+        />
 
         <form onSubmit={handleAddAnnouncement}>
           <Input
@@ -67,7 +84,11 @@ function AdminAnnouncements() {
             inputProps={{
               maxLength: maxInputLength,
             }}
-            style={{ border: "1px solid #ccc", borderRadius: "4px", padding: "8px" }}
+            style={{
+              border: "1px solid #ccc",
+              borderRadius: "4px",
+              padding: "8px",
+            }}
             endAdornment={
               <InputAdornment position="end">
                 <Typography variant="caption" color="textSecondary">
@@ -80,7 +101,11 @@ function AdminAnnouncements() {
             variant="contained"
             color="primary"
             type="submit"
-            style={{ marginTop: "16px", marginLeft: "auto", display: "block" }}
+            style={{
+              marginTop: "16px",
+              marginLeft: "auto",
+              display: "block",
+            }}
           >
             Add Announcement
           </Button>
@@ -126,10 +151,15 @@ function AdminAnnouncements() {
                         }}
                       />
                     ) : (
-                      <ListItemText
-                        primary={announcement.text}
-                        secondary={announcement.date}
-                      />
+                      <div>
+                        <Typography variant="h6">
+                          {announcement.title}
+                        </Typography>
+                        <ListItemText
+                          primary={announcement.text}
+                          secondary={announcement.date}
+                        />
+                      </div>
                     )}
                     {editedAnnouncementId === announcement.id ? (
                       <Button
@@ -144,6 +174,11 @@ function AdminAnnouncements() {
                         variant="contained"
                         color="primary"
                         onClick={() => handleEdit(announcement.id)}
+                        style={{
+                          marginTop: "16px",
+                          marginLeft: "auto",
+                          display: "block",
+                        }}
                       >
                         Edit
                       </Button>

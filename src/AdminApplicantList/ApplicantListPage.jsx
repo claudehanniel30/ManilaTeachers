@@ -9,7 +9,7 @@ class ApplicantListPage extends Component {
       applications: [
         {
           id: "APP001",
-          imageURL: 'https://example.com/sample-image.jpg',
+          imageURL: "https://example.com/sample-image.jpg",
           fullName: "John Doe",
           homeAddress: "123 Main St",
           email: "john.doe@example.com",
@@ -18,6 +18,37 @@ class ApplicantListPage extends Component {
           requirementsComplete: true, // Add this property for requirements completion
         },
         // Add more application data as needed
+        {
+          id: "APP001",
+          imageURL: "https://example.com/sample-image.jpg",
+          fullName: "John Doe",
+          homeAddress: "123 Main St",
+          email: "john.doe@example.com",
+          requirements: "Transcript, Essay",
+          dateTimeSubmitted: "10/01/2023 14:30",
+          requirementsComplete: true, // Add this property for requirements completion
+        },
+        {
+          id: "APP001",
+          imageURL: "https://example.com/sample-image.jpg",
+          fullName: "John Doe",
+          homeAddress: "123 Main St",
+          email: "john.doe@example.com",
+          requirements: "Transcript, Essay",
+          dateTimeSubmitted: "10/01/2023 14:30",
+          requirementsComplete: true, // Add this property for requirements completion
+        },
+        {
+          id: "APP001",
+          imageURL: "https://example.com/sample-image.jpg",
+          fullName: "John Doe",
+          homeAddress: "123 Main St",
+          email: "john.doe@example.com",
+          requirements: "Transcript, Essay",
+          dateTimeSubmitted: "10/01/2023 14:30",
+          requirementsComplete: true, // Add this property for requirements completion
+        },
+        
       ],
       currentPage: 1,
       itemsPerPage: 5, // Number of items to display per page
@@ -25,29 +56,23 @@ class ApplicantListPage extends Component {
     };
   }
 
-  // Implement action handlers for ASSESS, APPROVE, REJECT, and EDIT here
-
   // Function to handle search input
   handleSearchChange = (e) => {
     this.setState({ searchQuery: e.target.value });
   };
 
   render() {
-    const { applications, currentPage, itemsPerPage, searchQuery } = this.state;
+    const { searchQuery } = this.state;
 
-    // Filter applications based on search query
-    const filteredApplications = applications.filter((application) =>
-      application.fullName.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-
-    // Calculate the index of the first and last item to display on the current page
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = filteredApplications.slice(indexOfFirstItem, indexOfLastItem);
+    // Calculate the total number of applicants who have submitted forms
+    const totalApplicants = this.state.applications.length;
 
     return (
       <div>
         <h1>Scholarship Applications</h1>
+        <div className="total-applicants">
+          Total Applicants: {totalApplicants}
+        </div>
         <div className="search-bar">
           <label htmlFor="search">Search:</label>
           <input
@@ -71,7 +96,7 @@ class ApplicantListPage extends Component {
           </thead>
           <tbody>
             {/* Map through your scholarship applications data and render each row */}
-            {currentItems.map((application) => (
+            {this.state.applications.map((application) => (
               <tr key={application.id}>
                 <td>{application.id}</td>
                 <td>{application.fullName}</td>
@@ -88,22 +113,13 @@ class ApplicantListPage extends Component {
                 <td>{application.dateTimeSubmitted}</td>
                 <td>
                   {/* Implement your action buttons here */}
-                  <button
-                    className="assess"
-                    onClick={() => this.handleAssess(application)}
-                  >
+                  <button className="assess" onClick={() => this.handleAssess(application)}>
                     ASSESS
                   </button>
-                  <button
-                    className="approve"
-                    onClick={() => this.handleApprove(application)}
-                  >
+                  <button className="approve" onClick={() => this.handleApprove(application)}>
                     APPROVE
                   </button>
-                  <button
-                    className="reject"
-                    onClick={() => this.handleReject(application)}
-                  >
+                  <button className="reject" onClick={() => this.handleReject(application)}>
                     REJECT
                   </button>
                 </td>
@@ -117,3 +133,4 @@ class ApplicantListPage extends Component {
 }
 
 export default ApplicantListPage;
+  
